@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
-{% block middle-content %}
+{% block content %}
 <ul>
 {% for parent in rank_parents %}
-    <li><a href="{{ request.path }}{{ parent.slug }}/">{{ parent.name }}</a></li>
+    <li><a href="{% url 'parent_index' parent.slug %}">{{ parent.name }}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}

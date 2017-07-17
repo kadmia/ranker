@@ -42,6 +42,15 @@
       <a class="navbar-item " href="{% url 'root' %}">
         Home
       </a>
+      <a class="navbar-item " href="{% url 'root' %}">
+        Subgames
+      </a>
+      <a class="navbar-item " href="{% url 'root' %}">
+        Plugins
+      </a>
+      <a class="navbar-item " href="{% url 'rank:index' %}">
+        All rank categories
+      </a>
     </div>
 
     <div class="navbar-end">
@@ -67,16 +76,10 @@
   </div>
 </article>
 {% endif %}
-<section name="top" class="section">
-  {% block top-content %}{% endblock %}
-</section>
 <section name="middle" class="section">
   <div name="main-content" class="container">
-    {% block middle-content %}{% endblock %}
+    {% block content %}{% endblock %}
   </div>
-</section>
-<section name="bottom" class="section">
-  {% block bottom-content %}{% endblock %}
 </section>
 <footer class="footer">
   <div class="container">

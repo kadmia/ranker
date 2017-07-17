@@ -2,6 +2,7 @@ from django.conf.urls import url
 
 from . import views
 
+app_name = 'rank'
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^(?P<parent_slug>[\w-]+)/(?P<entity_slug>[\w-]*)/vote/$', views.vote, name='vote'),
