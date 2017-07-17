@@ -1,0 +1,5 @@
+<ul>
+{% for entity in rank_entities %}
+    <li><a href="{{ request.path }}{{ entity.slug }}"> {{ entity.name }}</a></li>
+{% endfor %}
+</ul>

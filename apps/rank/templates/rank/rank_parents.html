@@ -1,0 +1,5 @@
+<ul>
+{% for parent in rank_parents %}
+    <li><a href="{{ request.path }}/{{ parent.slug }}/">{{ parent.name }}</a></li>
+{% endfor %}
+</ul>
