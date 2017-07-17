@@ -1,5 +1,11 @@
-<ul>
-{% for entity in rank_entities %}
-    <li><a href="{{ request.path }}{{ entity.slug }}"> {{ entity.name }}</a></li>
-{% endfor %}
-</ul>
+{% extends 'base.html' %}
+
+{% block middle-content %}
+<div class="tile is-ancestor">
+    <div class="tile is-parent">
+    {% for entity in rank_entities %}
+        <div class="tile is-child box"><a href="{{ request.path }}{{ entity.slug }}"> {{ entity.name }}</a>: {{ entity.description|truncatewords:10 }}</div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

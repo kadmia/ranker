@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from apps.rank.models import RankParent, RankEntity
+from django.contrib import messages
 
 
 def index(request):
@@ -32,5 +33,6 @@ def vote(request, parent_slug, entity_slug):
     e = get_object_or_404(entity)
     e.votes += 1
     e.save()
+    messages.add_message(request, messages.INFO, 'Your vote has been saved')
     context = {'entity': e}
     return render(request, 'rank/rank_entity.html', context)

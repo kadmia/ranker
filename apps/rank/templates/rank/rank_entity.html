@@ -1,7 +1,21 @@
-{{ entity.name }}
-<br>
-{{ entity.description }}
-<br>
-{{ entity.votes }}
-<br>
-<a href="{{ request.path }}vote">vote</a>
+{% extends 'base.html' %}
+
+{% block middle-content %}
+<div class="tile is-ancestor">
+    <div class="tile is-parent is-vertical">
+        <article class="tile is-child is-6">
+            <p class="title"> {{ entity.name }} </p>
+        </article>
+        <article class="tile is-child is-6">
+            <p class="content">{{ entity.description }}</p>
+        </article>
+
+            <article class="tile is-child is-6">
+                <div class="box is-primary">
+                    {{ entity.votes }}
+                </div>
+                <a href="{{ request.path }}vote">vote</a>
+            </article>
+    </div>
+</div>
+{% endblock %}

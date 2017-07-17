@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static 'site/css/bulma.css' %}" rel="stylesheet" type="text/css">
+    <title>Minetest subgame ranking</title>
+</head>
+<body>
+
+<nav class="navbar ">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{% url 'root' %}">
+      <object data="{% static 'site/images/minetest_icon.svg' %}" type="image/svg+xml">
+        <img src="yourfallback.jpg" />
+      </object>
+    </a>
+
+    <a class="navbar-item is-hidden-desktop" href="https://github.com/jgthms/bulma" target="_blank">
+      <span class="icon" style="color: #333;">
+        <i class="fa fa-github"></i>
+      </span>
+    </a>
+
+    <a class="navbar-item is-hidden-desktop" href="https://twitter.com/jgthms" target="_blank">
+      <span class="icon" style="color: #55acee;">
+        <i class="fa fa-twitter"></i>
+      </span>
+    </a>
+
+      <!-- used for the three dashes on mobile, TODO try this out when testing on mobile
+    <div class="navbar-burger burger" data-target="navMenuExample">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    -->
+  </div>
+
+  <div id="navMenuExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item " href="{% url 'root' %}">
+        Home
+      </a>
+    </div>
+
+    <div class="navbar-end">
+      <a class="navbar-item" href="https://github.com/kadmia/ranker" target="_blank">
+        Github
+      </a>
+    </div>
+  </div>
+</nav>
+
+{% if messages %}
+<article class="message">
+  <div class="container">
+      <div class="message-header">
+        <p>Information</p>
+        <button class="delete"></button>
+      </div>
+      <div class="message-body">
+        {% for message in messages %}
+        <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+        {% endfor %}
+      </div>
+  </div>
+</article>
+{% endif %}
+<section name="top" class="section">
+  {% block top-content %}{% endblock %}
+</section>
+<section name="middle" class="section">
+  <div name="main-content" class="container">
+    {% block middle-content %}{% endblock %}
+  </div>
+</section>
+<section name="bottom" class="section">
+  {% block bottom-content %}{% endblock %}
+</section>
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Minetest Ranker</strong> by <a href="http://adambritt.com">Adam Britt</a>.
+      </p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
