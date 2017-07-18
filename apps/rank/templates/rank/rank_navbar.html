@@ -1,0 +1,5 @@
+{% for item in navbar_items %}
+<a class="navbar-item " href="{% url 'rank:parent_index' item.slug %}">
+    {{ item.name }}
+</a>
+{% endfor %}

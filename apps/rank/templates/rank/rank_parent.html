@@ -4,7 +4,7 @@
 <div class="tile is-ancestor">
     <div class="tile is-parent">
     {% for entity in rank_entities %}
-        <div class="tile is-child box"><a href="{% url 'entity_index' entity.parent.slug entity.slug %}"> {{ entity.name }}</a>: {{ entity.description|truncatewords:10 }}</div>
+        <div class="tile is-child box"><a href="{% url 'rank:entity_index' entity.parent.slug entity.slug %}"> {{ entity.name }}</a>: {{ entity.description|truncatewords:10 }}</div>
     {% endfor %}
     </div>
 </div>

@@ -3,7 +3,7 @@
 {% block content %}
 <ul>
 {% for parent in rank_parents %}
-    <li><a href="{% url 'parent_index' parent.slug %}">{{ parent.name }}</a></li>
+    <li><a href="{% url 'rank:parent_index' parent.slug %}">{{ parent.name }}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}
