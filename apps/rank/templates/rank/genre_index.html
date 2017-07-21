@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="tile is-ancestor">
+    <div class="tile is-parent">
+        {% for genre in genres %}
+        <div class="tile is-child box"><a href="{{ genre.get_absolute_url }}"> {{ genre.name }}</a>: {{ genre.description|truncatewords:10 }}</div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

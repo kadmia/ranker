@@ -3,3 +3,15 @@
     {{ item.name }}
 </a>
 {% endfor %}
+<div class="navbar-item has-dropdown is-hoverable">
+    <a class="navbar-link is-active" href="{% url 'rank:genre_index' %}">
+        Genres
+    </a>
+    <div class="navbar-dropdown ">
+        {% for genre in genres %}
+        <a class="navbar-item " href="{{ genre.get_absolute_url }}">
+            {{ genre.name }}
+        </a>
+        {% endfor %}
+    </div>
+</div>

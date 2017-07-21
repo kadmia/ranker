@@ -1,21 +1,116 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="tile is-ancestor">
-    <div class="tile is-parent is-vertical">
-        <article class="tile is-child is-6">
-            <p class="title"> {{ entity.name }} </p>
-        </article>
-        <article class="tile is-child is-6">
+<div class="columns">
+    <div class="column is-4 is-offset-2">
+        <p class="title"> {{ entity.name }} </p>
+    </div>
+    <div class="column is-one-quarter">
+        <div class="box">
+            <a class="button is-success" href="{{ request.path }}vote">vote</a>
+            <span class="tag is-large">{{ entity.votes }}</span>
+        </div>
+    </div>
+</div>
+<div class="columns">
+    <div class="column is-2">
+        <div class="content">
+            {% if entity.created %}
+            <h5>Created:</h5> {{ entity.created }}
+            {% endif %}
+            {% if entity.last_update %}
+            <h5>Last Updated:</h5> {{ entity.last_update }}
+            {% endif %}
+        </div>
+    </div>
+    <div class="column is-8">
+        <div class="content">
+            <h3>Description</h3>
             <p class="content">{{ entity.description }}</p>
-        </article>
-
-            <article class="tile is-child is-6">
-                <div class="box is-primary">
-                    {{ entity.votes }}
-                </div>
-                <a href="{{ request.path }}vote">vote</a>
-            </article>
+        </div>
+    </div>
+</div>
+<div class="columns">
+    <div class="column is-2 is-offset-2">
+        <div class="content">
+            <h5>Genres: </h5>
+            {% if entity.genre.all %}
+            {% for genre in entity.genre.all %}
+            {% if not forloop.first %}, {% endif %}
+            <a href="{{ genre.get_absolute_url }}">{{ genre.name }}</a>
+            {% endfor %}
+            {% else %}
+            No genre
+            {% endif %}
+        </div>
+    </div>
+    <div class="column is-2">
+        <div class="content">
+            <h5>Game State:</h5>
+            {% if entity.game_state %}
+            {{ entity.game_state }}
+            {% else %}
+            Unknown
+            {% endif %}
+        </div>
+    </div>
+    <div class="column is-2">
+        <div class="content">
+            <h5>Authors: </h5>
+            {% if entity.authors.all %}
+            {% for author in entity.authors.all %}
+            {% if not forloop.first %}, {% endif %}
+            <!-- TODO add templates and views for authors
+            <a href="{{ author.get_absolute_url }}">{{ author.name }}</a>
+            -->
+            {{ author.name }}
+            {% endfor %}
+            {% else %}
+            No genre
+            {% endif %}
+        </div>
+    </div>
+</div>
+<div class="columns">
+    <div class="column is-2 is-offset-2">
+        <div class="content">
+            <h5>Website:</h5>
+            {% if entity.website %}
+            <a href="{{ entity.website }}">website</a>
+            {% else %}
+            Unknown
+            {% endif %}
+        </div>
+    </div>
+    <div class="column is-2">
+        <div class="content">
+            <h5>Source Code:</h5>
+            {% if entity.source_url %}
+            <a href="{{ entity.source_url }}">Source code</a>
+            {% else %}
+            Unknown
+            {% endif %}
+        </div>
+    </div>
+    <div class="column is-2">
+        <div class="content">
+            <h5>Documentation:</h5>
+            {% if entity.documentation_url %}
+            <a href="{{ entity.documentation_url }}">documentation</a>
+            {% else %}
+            Unknown
+            {% endif %}
+        </div>
+    </div>
+    <div class="column is-2">
+        <div class="content">
+            <h5>License:</h5>
+            {% if entity.license_type %}
+                {{ entity.license_type }}
+            {% else %}
+            Unknown
+            {% endif %}
+        </div>
     </div>
 </div>
 {% endblock %}

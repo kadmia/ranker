@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="tile is-ancestor">
+    <div class="tile is-parent is-vertical">
+        <article class="tile is-child is-6">
+            <p class="title"> {{ genre.name }} </p>
+        </article>
+        <article class="tile is-child is-6">
+            <p class="content">{{ genre.description }}</p>
+        </article>
+
+        <article class="tile is-child is-6">
+            {% for entity in genre.entities.all %}
+                <a href="{{ entity.get_absolute_url }}">{{ entity.name }}</a>
+                <br>
+            {% endfor %}
+        </article>
+    </div>
+</div>
+{% endblock %}
